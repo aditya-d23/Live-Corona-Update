@@ -3,7 +3,7 @@ import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
-
+import  os
 
 external_stylesheets = ['https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css']
 
@@ -93,4 +93,6 @@ def update_graph(type):
         }
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8050))  # Default to port 8050 locally
+    app.run_server(debug=True, host='0.0.0.0', port=port)
     app.run_server(debug=True)
